@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 // components 
-import ProjectOwner from "../components/ProjectPageComponents/ProjectOwner/ProjectOwner";
+// import ProjectOwner from "../components/ProjectPageComponents/ProjectOwner/ProjectOwner";
 
 function ProjectPage() {
     // State
@@ -12,7 +12,7 @@ function ProjectPage() {
 
     // Actions and Helpers 
     useEffect(() => {
-        // go get the stuff in this URL, come back later
+        // go get the stuff in this URL, come back 
         fetch(`${process.env.REACT_APP_API_URL}projects/${id}`)
         .then((results) => {
         // sure when you get the data, convert into json,
@@ -34,15 +34,15 @@ function ProjectPage() {
         // react fragment prevents divs within a div
         <div className="project-wrapper">
             <div id="project-title-owner">
+
                 <h2>{projectData.title}</h2>
-                <h3>Invented by: <ProjectOwner owner={ProjectOwner} /> on {projectData.date_created}</h3>
+                <img className="project-image" alt="Pretty-Dog" src={projectData.image} />
             </div>
 
-        <div>
-            <h2>{projectData.title}</h2>
+            <div>
             <h3>Created at: {projectData.date_created}</h3>
             <h3>{`Status: ${projectData.is_open}`}</h3>
-            <h3>Pledges:</h3>
+            <h3>Pledges: {projectData.pledges}</h3>
         <ul>
         {projectData.pledges.map((pledgeData, key) => {
             return (

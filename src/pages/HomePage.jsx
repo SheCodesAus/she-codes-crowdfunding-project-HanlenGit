@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import ProjectCard from "../components/ProjectCard/ProjectCard";
 // data
 // import { allProjects } from "../data";
+// Pages
+import './HomePage.css';
 
 function HomePage() {
 // States (set the project list with our fake data for now) - useState preserves some values between function calls. 
@@ -17,12 +19,13 @@ function HomePage() {
         return results.json();
         })
         .then((data) => {
-        // when you do this set the project list. 
+        // when you do tzhis set the project list. 
         setProjectList(data);
         });
     }, []);
 
     return (
+
         <div id="project-list">
         {projectList.map((projectData, key) => {
         return <ProjectCard key={key} projectData={projectData} />;

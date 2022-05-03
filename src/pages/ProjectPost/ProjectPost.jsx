@@ -1,9 +1,9 @@
 import React from "react";
 import LoginForm from "../components/LoginForm/LoginForm";
 
-function LoginPage() {
+function ProjectPost() {
 
-    return <LoginForm />;
+    return <ProjectForm />;
 }
 
-export default LoginPage;
+export default ProjectPost;

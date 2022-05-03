@@ -21,8 +21,7 @@ function PledgeUser({owner}) {
 
     // Normal State
     return (
-        <span>{ownerData.username}</span>
-            
+        <span>{ownerData.username}</span>    
     );
 }
 
