@@ -11,6 +11,19 @@
   padding-right: 100px;
   background-color: #DACBB4;
 }
+#projects-list {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  column-gap: 10px;
+  row-gap: 10px;
+  text-align: center;
+  justify-content: center;
+  padding-left: 100px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  padding-right: 100px;
+  background-color: #DACBB4;
+}
 .project-wrapper {
   border-color: #3E2818;
   border-style: solid;

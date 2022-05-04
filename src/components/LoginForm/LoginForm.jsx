@@ -7,6 +7,8 @@ function LoginForm() {
     username: "",
     password: "",
   });
+
+  // Hooks
   const navigate = useNavigate();
 
   // Actions and Helpers
@@ -18,52 +20,55 @@ function LoginForm() {
     }));
   };
 
-  const postData = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}api-token-auth/`,
-      {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(credentials),
-      }
-    );
-    return response.json();
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (credentials.username && credentials.password) {
-      postData().then((response) => {
-        window.localStorage.setItem("token", response.token);
-        navigate("/");
-      });
-    }
-  };
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   if (credentials.username && credentials.password) {
-  //     try {
-  //       const response = await fetch(
-  //         `${process.env.REACT_APP_API_URL}api-token-auth/`,
-  //         {
-  //           method: "post",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify(credentials),
-  //         }
-  //       );
-  //       const data = await response.json();
-  //       window.localStorage.setItem("token", data.token);
-  //     } catch (err) {
-  //       console.log(err);
+  // const postData = async () => {
+  //   const response = await fetch(
+  //     `${process.env.REACT_APP_API_URL}api-token-auth/`,
+  //     {
+  //       method: "post",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(credentials),
   //     }
+  //   );
+  //   return response.json();
+  // };
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (credentials.username && credentials.password) {
+  //     postData().then((response) => {
+  //       console.log("response", response);
+  //       window.localStorage.setItem("token", response.token);
+  //     });
   //   }
   // };
 
-//   normal state
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (credentials.username && credentials.password) {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}api-token-auth/`,
+          {
+            method: "post",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(credentials),
+          }
+        );
+        const data = await response.json();
+        console.log("data", data);
+        window.localStorage.setItem("token", data.token);
+        window.localStorage.setItem("username", credentials.username);
+        navigate("/");
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
   return (
     <form>
       <div>

@@ -4,7 +4,6 @@ import "./App.css";
 // components
 import Nav from "./components/Nav/Nav";
 import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 
 // pages
 import HomePage from "./pages/HomePage";
@@ -29,10 +28,8 @@ function App() {
         </Routes>
       </section>
 
-      <section className="end">
-        <Footer link rel="stylesheet" href="Footer.css" />
-      </section>
-    </Router>
+      </Router>
+
   );
 }
 

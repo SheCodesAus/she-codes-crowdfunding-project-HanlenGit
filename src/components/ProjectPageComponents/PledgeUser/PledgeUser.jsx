@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from "react";
 
-function PledgeUser({owner}) {
+function PledgeUser({amount, supporter, comment}) {
     // State
-    const [ownerData, setOwnerData] = useState();
-    
+    const [supporterData, setSupporterData] = useState();
+
     // Actions & Helpers
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}users/${owner}`)
+        fetch(`${process.env.REACT_APP_API_URL}users/${supporter}`)
         .then((results) => {
             return results.json();
         })
         .then((data) => {
-            setOwnerData(data);
+            setSupporterData(data);
         });
-    }, [owner]);
+    }, [supporter]);
 
- if (!ownerData) {
+ if (!supporterData) {
      return null
  }
 
     // Normal State
     return (
-        <span>{ownerData.username}</span>    
+            <li id="pledges-and-comments">
+                ${amount} from {supporterData.username} 
+                <br></br>"{comment}"
+            </li>    
     );
 }
 
