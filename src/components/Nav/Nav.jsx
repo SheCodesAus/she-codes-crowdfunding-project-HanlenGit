@@ -14,7 +14,7 @@ function Nav() {
                 <Link to="/owner">Login</Link>
                 </li>
                 <li className="nav-link">
-                <Link to="/animals">Post a Project</Link>
+                <Link to="/postaproject">Post a Project</Link>
                 </li>
         </div>
     );
