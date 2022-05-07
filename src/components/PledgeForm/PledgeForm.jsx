@@ -7,6 +7,7 @@ function PledgeForm({ projectId }) {
   const [pledge, setPledge] = useState({
     amount: "",
     comment: "",
+    anonymous: false,
   });
 
   // Actions and Helpers
@@ -20,32 +21,41 @@ function PledgeForm({ projectId }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}pledges/`, {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-            amount: parseInt(pledge.amount), 
-            comment: pledge.comment, 
-            anonymous: true, 
-            supporter: pledge.suporter.id,
-            project_id: parseInt(projectId)
-          
-        }),
-      });
-      const data = await res.json();
-      console.log(data);
-    } catch (err) {
-      console.log(err);
+    const token = window.localStorage.getItem("token")
+    console.log("handleSubmit", pledge, token)
+    
+    // Is user logged in and have they put something in all fields?
+    if (token && pledge.amount && pledge.comment) {
+        try {
+          // this is posting my content from my user to the app
+            const res = await fetch(`${process.env.REACT_APP_API_URL}pledges/`, {
+                method: "post",
+                headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+                },
+                // this is the front end telling the back end what to do
+                body: JSON.stringify({
+                    amount: parseInt(pledge.amount), 
+                    comment: pledge.comment, 
+                    anonymous: pledge.anonymous === 'true', 
+                    project_id: parseInt(projectId),
+                    supporter: 1
+                
+                }),
+            });
+            // giving the details of what the code is doing on my react app
+            const data = await res.json();
+            console.log(data);
+        } catch (err) {
+            console.log(err);
+        }
     }
   };
 
   if (!token) {
     return (
-      <Link to="/login">Please login to pledge to this amazing project</Link>
+      <Link to="/login">Please login to pledge to this project</Link>
     );
   }
 

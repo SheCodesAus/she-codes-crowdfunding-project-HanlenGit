@@ -5,8 +5,7 @@ import { useParams } from "react-router-dom";
 
 // Components
 import PledgeUser from "../components/ProjectPageComponents/PledgeUser/PledgeUser";
-import ProgressBar from "../components/ProjectPageComponents/ProgressBar/ProgressBar";
-import ProjectOwner from "../components/ProjectPageComponents/ProjectOwner/ProjectOwner";
+import UserDetail from "../components/ProjectPageComponents/UserDetail/UserDetail";
 import PledgeForm from "../components/PledgeForm/PledgeForm";
 
 
@@ -17,7 +16,7 @@ function ProjectPage() {
 
 
     // Hooks
-    const { id } = useParams();
+    const { id } = useParams()
 
     // Actions and Helpers
     useEffect(() => {
@@ -49,12 +48,11 @@ function ProjectPage() {
           </div>
 
           <div>
-          <h3>Project Owned By: <ProjectOwner supporter={projectData.owner} /> on {projectData.date_created}</h3>
+          <h3>Project Owned By: <UserDetail userId={projectData.owner}/> on {projectData.date_created}</h3>
           <h3>Description: {projectData.description}</h3>
-          <h3>Project Goal: {projectData.goal}</h3>
-          <h3>Pledges total: {projectData.totalPledges}</h3>
+          <h3>Project Goal: ${projectData.goal}</h3>
+          <h3>Pledges total: ${projectData.totalPledges}</h3>
 
-          <ProgressBar completed={projectGoal} />
       <ul>
       {projectData.pledges.map((pledgeData, key) => {
           return (

@@ -4,6 +4,7 @@ import "./App.css";
 // components
 import Nav from "./components/Nav/Nav";
 import Header from "./components/Header/Header";
+import ProjectForm from "./components/ProjectForm/ProjectForm";
 
 // pages
 import HomePage from "./pages/HomePage";
@@ -23,6 +24,7 @@ function App() {
       <section className="middle">
         <Routes>
           <Route path="/project/:id" element={<ProjectPage />} />
+          <Route path="/postaproject" element={<ProjectForm />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<HomePage />} />
         </Routes>
