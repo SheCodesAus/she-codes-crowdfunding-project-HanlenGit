@@ -30,6 +30,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/editaproject" element={<EditProjectForm />} />
+          <Route path="project/editaproject" element={<EditProjectForm />} />
         </Routes>
       </section>
       
