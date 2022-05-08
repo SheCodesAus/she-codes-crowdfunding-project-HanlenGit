@@ -16,7 +16,6 @@ function ProjectCard( { projectData } ) {
                 <h3>{projectData.title}</h3>
                 <h3>{projectData.pledges}</h3>
                 </Link>
-                <h3>{projectData.owner}</h3>
             </div>
     );
 }

@@ -70,24 +70,14 @@ function LoginForm() {
   };
 
   return (
-    <form>
-      <div>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          placeholder="Enter username"
-          onChange={handleChange}
-        />
+    <form class="form-group">
+      <div class="form-group row">
+        <label for="exampleInputUsername">Username:</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={handleChange} />
       </div>
       <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="Password"
-          onChange={handleChange}
-        />
+        <label for="staticEmailexampleInputPassword">Password:</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password" onChange={handleChange} />
       </div>
       <button type="submit" onClick={handleSubmit}>
         Login

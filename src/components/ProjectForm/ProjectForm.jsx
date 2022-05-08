@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-
-// Imports
 import { useNavigate } from "react-router-dom";
 
 function ProjectForm(projectData) {
@@ -40,14 +38,13 @@ function ProjectForm(projectData) {
             },
             body: JSON.stringify({
               title: project.title, 
+              image: project.image,
               description: project.description,
               goal: parseInt(project.goal),
-              image: project.image,
+              pledge: project.pledge,
               is_open: project.is_open === "on",
               date_created: new Date(project.date_created).toISOString(),
-              category: project.category,
-              closing_date: new Date(project.closing_date).toISOString()
-            }),
+          }),
           }
         );
         const data = await response.json();
@@ -100,11 +97,11 @@ function ProjectForm(projectData) {
 ]
 
     return ( 
-        <form>
+        <form class="form-group">
             {formFields.map((field, key) => {
                 return (
-                <div key={`${key}-${field.id}`}>
-                    <label htmlFor={field.id}>
+                <div class="form-group" key={`${key}-${field.id}`}>
+                    <label for="exampleInputEmail1" htmlFor={field.id}>
                         {field.label}
                     </label>
                     <input
@@ -116,7 +113,7 @@ function ProjectForm(projectData) {
                 </div>
                 )
             })}
-            <button type="submit" onClick={handleSubmit}>
+            <button type="button" class="btn btn-info" onClick={handleSubmit}>
                 Post Project
             </button>
         </form>

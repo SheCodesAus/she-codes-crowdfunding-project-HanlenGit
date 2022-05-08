@@ -27,9 +27,7 @@ function ProjectPage() {
         .then((data) => {
           setProjectData(data);
 
-
-        const projectGoal = data.goal 
-        setProjectGoal(projectGoal)
+        setProjectGoal(projectGoal.projectData.goal)
         })
     }, [id]);
 
@@ -50,7 +48,7 @@ function ProjectPage() {
           <div>
           <h3>Project Owned By: <UserDetail userId={projectData.owner}/> on {projectData.date_created}</h3>
           <h3>Description: {projectData.description}</h3>
-          <h3>Project Goal: ${projectData.goal}</h3>
+          <h3>Project Goal: $<projectGoal amount={projectGoal} /></h3>
           <h3>Pledges total: ${projectData.totalPledges}</h3>
 
       <ul>

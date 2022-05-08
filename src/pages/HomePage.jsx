@@ -26,7 +26,7 @@ function HomePage() {
 
     return (
 
-        <div id="project-list">
+        <div className="project-list-home">
         {projectList.map((projectData, key) => {
         return <ProjectCard key={key} projectData={projectData} />;
         })}

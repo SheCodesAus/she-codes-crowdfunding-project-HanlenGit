@@ -11,6 +11,20 @@
   padding-right: 100px;
   background-color: #DACBB4;
 }
+.project-list-home {
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: 30% 30% 30%;
+  column-gap: 10px;
+  row-gap: 10px;
+  text-align: center;
+  justify-content: center;
+  padding-left: 100px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+  padding-right: 100px;
+  background-color: #DACBB4;
+}
 #projects-list {
   display: grid;
   grid-template-columns: 30% 30% 30%;
@@ -29,7 +43,7 @@
   border-style: solid;
   align-items: center;
   justify-content: center;
-  height: 600px;
+  height: auto;
   background-color: #DACBB4;
 }
 .project-image {

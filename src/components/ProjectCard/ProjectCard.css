@@ -1,11 +1,12 @@
 /* do not touch this page, it styles the home page */
 .project-card {
-  position: realtive;
+  position: static;
   border-color: #3E2818;
   border-style: solid;
   align-items: center;
   justify-content: center;
-  height: 400px;
+  height: auto;
+  width: auto;
   background-color: #906E49;
   }
 
@@ -13,6 +14,6 @@
   .project-card img {
     display: flex;
     width: 100%;
-    height: 300px;
+    height: auto;
     object-fit: cover;
   }
