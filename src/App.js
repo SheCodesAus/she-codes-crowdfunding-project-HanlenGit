@@ -12,7 +12,7 @@ import ProjectForm from "./components/ProjectForm/ProjectForm";
 // pages
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
-import LoginPage from "./pages/LoginPage";
+// import LoginPage from "./pages/LoginPage";
 // import EditProject from "./pages/EditProject/EditProject";
 
 function App() {
@@ -27,10 +27,10 @@ function App() {
         <Routes>
           <Route path="/project/:id" element={<ProjectPage />} />
           <Route path="/postaproject" element={<ProjectForm />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path="/login" element={<LoginForm />} />
           <Route path="/" element={<HomePage />} />
-          <Route path="/editaproject" element={<EditProjectForm />} />
-          <Route path="project/editaproject" element={<EditProjectForm />} />
+          <Route path="project/:id/edit" element={<EditProjectForm />} />
+          <Route path="project/:id/delete" element={<DeleteProject />} />
         </Routes>
       </section>
       
