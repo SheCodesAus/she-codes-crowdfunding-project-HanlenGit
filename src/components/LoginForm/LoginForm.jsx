@@ -61,7 +61,7 @@ function LoginForm() {
         const data = await response.json();
         console.log("data", data);
         window.localStorage.setItem("token", data.token);
-        window.localStorage.setItem("username", credentials.username);
+        // window.localStorage.setItem("username", credentials.username);
         navigate("/");
       } catch (err) {
         console.log(err);
@@ -71,14 +71,10 @@ function LoginForm() {
 
   return (
     <form class="form-group">
-      <div class="form-group row">
         <label for="exampleInputUsername">Username:</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" onChange={handleChange} />
-      </div>
-      <div>
+        <input type="email" className="form-item" placeholder="Enter email" onChange={handleChange} />
         <label for="staticEmailexampleInputPassword">Password:</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter password" onChange={handleChange} />
-      </div>
+        <input type="email" className="form-item" placeholder="Enter password" onChange={handleChange} />
       <button type="submit" onClick={handleSubmit}>
         Login
       </button>

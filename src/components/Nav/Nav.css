@@ -1,10 +1,77 @@
-.nav-container {
-  background-color: #DACBB4
-}
-.nav-link {
-  height: 80px;
+.nav-bar {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px ;
+  background-color: #deaa88;
+}
+#logo {
+  padding-left: 40%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.button {
+  background-color:#deaa88;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline;
+  font-size: 16pt;
+}
+.hamburger {
+  padding-right: 30px;
+  cursor: pointer;
+}
+.line {
+  display: block;
+  width: 40px;
+  height: 5px;
+  margin-bottom: 10px;
+  background-color: black;
+}
+#nav-link {
+  color: #D5D5D3;
+}
+
+.nav__link {
+  position: fixed;
+  width: 94%;
+  top: 5rem;
+  left: 18px;
+  background-color: lightblue;
+}
+
+.nav__link a {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.nav__link a:hover {
+  background-color: #D5D5D3;
+}
+
+.hide {
+  display: none;
+}
+@media screen and (min-width: 300px) {
+  .nav__link {
+    display: block;
+    position: static;
+    width: auto;
+    margin-right: 20px;
+    background: none;
+  }
+
+  .nav__link a {
+    display: inline-block;
+    padding: 15px 20px;
+  }
+
+  .hamburger {
+    display: none;
+  }
 }

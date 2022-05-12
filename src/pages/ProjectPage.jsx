@@ -9,10 +9,11 @@ import UserDetail from "../components/ProjectPageComponents/UserDetail/UserDetai
 import PledgeForm from "../components/PledgeForm/PledgeForm";
 
 
+
 function ProjectPage() {
     // State
     const [projectData, setProjectData] = useState();
-    const [projectGoal, setProjectGoal] = useState();
+    // const [projectGoal, setProjectGoal] = useState();
 
 
     // Hooks
@@ -26,9 +27,7 @@ function ProjectPage() {
         })
         .then((data) => {
           setProjectData(data);
-
-        setProjectGoal(projectGoal.projectData.goal)
-        })
+        });
     }, [id]);
 
     // Loading State only shows when data taking time to come up
@@ -39,31 +38,35 @@ function ProjectPage() {
     // Normal State
     return (
       // react fragment prevents divs within a div
-      <div className="project-wrapper">
-          <div id="project-title-owner">
-              <h2>{projectData.title}</h2>
-              <img className="project-image" alt="Pretty-Dog" src={projectData.image} />
-          </div>
-
-          <div>
-          <h3>Project Owned By: <UserDetail userId={projectData.owner}/> on {projectData.date_created}</h3>
-          <h3>Description: {projectData.description}</h3>
-          <h3>Project Goal: $<projectGoal amount={projectGoal} /></h3>
-          <h3>Pledges total: ${projectData.totalPledges}</h3>
-
-      <ul>
-      {projectData.pledges.map((pledgeData, key) => {
-          return (
-          <li>
-              ${pledgeData.amount} from {PledgeUser.supporter}
-          </li>
-          );
-      })}
-          </ul>
-        <PledgeForm projectId={id} />
-          </div>
-      </div>
       
+      <div className="project-wrapper">
+          <div className="project-title-owner">
+            <h2>{projectData.title}</h2>
+            <img className="img-circle" alt="Pretty-Dog" src={projectData.image} />
+            <h3 className="project-page-text">Fur Baby Owned By: <UserDetail userId={projectData.owner} /></h3>
+            <h3 className="project-page-text">Project Id: {projectData.id}</h3>
+            <h3 className="project-page-text">Date: {projectData.date_created}</h3>
+            <h3 className="project-page-text">Description: {projectData.description}</h3>
+            <h3 className="project-page-text">Project Goal: ${projectData.goal}</h3>
+            <h3 className="project-page-text">Pledges total: ${projectData.pledges}</h3>
+      </div>
+      <div>
+            <ul>
+                {projectData.pledges.map((pledgeData, key) => {
+                    return (
+                        <PledgeUser
+                        key={`pledge-${pledgeData.id}`} 
+                        amount={pledgeData.amount} 
+                        supporter={pledgeData.supporter} 
+                        comment={pledgeData.comment}
+                        pledge_date={pledgeData.date_created}
+                        />
+                    );
+                })}
+            </ul>
+            <PledgeForm projectId={id}/>
+        </div>
+      </div> 
     );
   }
 

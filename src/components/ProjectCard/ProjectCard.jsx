@@ -13,8 +13,8 @@ function ProjectCard( { projectData } ) {
             <div className="project-card">
                 <Link to={`/project/${projectData.id}`}>
                 <img src={projectData.image} alt="the project"/>
-                <h3>{projectData.title}</h3>
-                <h3>{projectData.pledges}</h3>
+                <h3 className="project-card-text">{projectData.title}</h3>
+                <h3 className="project-card-text">{projectData.pledges}</h3>
                 </Link>
             </div>
     );

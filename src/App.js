@@ -3,41 +3,32 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 // components
 import Nav from "./components/Nav/Nav";
-// import Footer from ".components/Footer/Footer";
-// import Header from "./components/Header/Header";
-import EditProjectForm from "./components/EditProjectForm/EditProjectForm";
-// import LoginForm from "./components/LoginForm/LoginForm";
-import ProjectForm from "./components/ProjectForm/ProjectForm";
+// import EditProjectForm from "./components/EditProjectForm/EditProjectForm";
 
 // pages
 import HomePage from "./pages/HomePage";
 import ProjectPage from "./pages/ProjectPage";
-// import LoginPage from "./pages/LoginPage";
-// import EditProject from "./pages/EditProject/EditProject";
+import EditProject from "./pages/EditProject/EditProject";
+import ProjectPost from "./pages/ProjectPost/ProjectPost";
+import LoginPage from "./pages/LoginPage";
+import PledgePage from "./pages/PledgePage";
 
 function App() {
   return (
     <Router>
-
-      <section className="top">
-        <Nav link rel="stylesheet" href="Nav.css" /> 
-      </section>
       
-      <section className="middle">
+        <Nav link rel="stylesheet" href="Nav.css" /> 
+  
         <Routes>
           <Route path="/project/:id" element={<ProjectPage />} />
-          <Route path="/postaproject" element={<ProjectForm />} />
-          <Route path="/login" element={<LoginForm />} />
+          <Route path="/postaproject" element={<ProjectPost />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<HomePage />} />
-          <Route path="project/:id/edit" element={<EditProjectForm />} />
-          <Route path="project/:id/delete" element={<DeleteProject />} />
+          <Route path="/projects/:id/edit" element={<EditProject />} />
+          <Route path="/pledges" element={<PledgePage />} /> 
         </Routes>
-      </section>
-      
-      {/* <section className="end">
-        <Footer> This is the Footer Section</Footer>
-      </section> */}
-      </Router>
+
+    </Router>
   );
 }
 

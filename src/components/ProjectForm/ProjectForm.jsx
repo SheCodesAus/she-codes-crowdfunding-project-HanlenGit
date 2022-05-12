@@ -31,7 +31,7 @@ function ProjectForm(projectData) {
         const response = await fetch(
           `${process.env.REACT_APP_API_URL}projects/`,
           {
-            method: "post",
+            method: "put",
             headers: {
               "Content-Type": "application/json",
               'Authorization': `Token ${token}`,
@@ -97,23 +97,24 @@ function ProjectForm(projectData) {
 ]
 
     return ( 
-        <form class="form-group">
+        <form className="form-group">
+          <h2 className="project-header">Start a Campaign today! </h2>
             {formFields.map((field, key) => {
                 return (
-                <div class="form-group" key={`${key}-${field.id}`}>
+                <div className="form-group" key={`${key}-${field.id}`}>
                     <label for="exampleInputEmail1" htmlFor={field.id}>
                         {field.label}
                     </label>
                     <input
                         type={field.type}
                         id={field.id}
-                        placeholder={field.placeholder}
+                        // placeholder={field.placeholder}
                         onChange={handleChange}
                     />
                 </div>
                 )
             })}
-            <button type="button" class="btn btn-info" onClick={handleSubmit}>
+            <button type="button" className="form-button" onClick={handleSubmit}>
                 Post Project
             </button>
         </form>

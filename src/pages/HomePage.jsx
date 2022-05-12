@@ -25,12 +25,13 @@ function HomePage() {
     }, []);
 
     return (
-
-        <div className="project-list-home">
-        {projectList.map((projectData, key) => {
-        return <ProjectCard key={key} projectData={projectData} />;
-        })}
-        </div>
+        <main>
+            <div className="project-list-home">
+            {projectList.map((projectData, key) => {
+            return <ProjectCard key={key} projectData={projectData} />;
+            })}
+            </div>
+        </main>
     );
 }
 export default HomePage;
