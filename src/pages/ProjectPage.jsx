@@ -13,7 +13,9 @@ import PledgeForm from "../components/PledgeForm/PledgeForm";
 function ProjectPage() {
     // State
     const [projectData, setProjectData] = useState();
-    // const [projectGoal, setProjectGoal] = useState();
+    const [projectPledgeAmount, setProjectPledgeAmount] = useState();
+    const [isError, setIsError] = useState(false);
+
 
 
     // Hooks
@@ -27,7 +29,20 @@ function ProjectPage() {
         })
         .then((data) => {
           setProjectData(data);
-        });
+
+          if (data.detail === 'Not found.') {
+            setIsError(true)
+        } else {
+            setProjectData(data);
+
+            const totalPledges = data.pledges
+            // eslint-disable-next-line eqeqeq
+              .filter (pledge => pledge.project_id == id)
+            // reducing your list to an output value
+              .reduce ((sum, pledge) => sum + pledge.amount, 0)
+            setProjectPledgeAmount(totalPledges);
+            }
+        })
     }, [id]);
 
     // Loading State only shows when data taking time to come up
@@ -35,6 +50,9 @@ function ProjectPage() {
       return <h3>Loading project....</h3>;
     }
 
+    if (isError) {
+      return <h3>Invention Doesn't Exist...</h3>;
+  }
     // Normal State
     return (
       // react fragment prevents divs within a div
@@ -48,7 +66,7 @@ function ProjectPage() {
             <h3 className="project-page-text">Date: {projectData.date_created}</h3>
             <h3 className="project-page-text">Description: {projectData.description}</h3>
             <h3 className="project-page-text">Project Goal: ${projectData.goal}</h3>
-            <h3 className="project-page-text">Pledges total: ${projectData.pledges}</h3>
+            <h3 className="project-page-text">Pledges total: ${projectPledgeAmount}</h3>
       </div>
       <div>
             <ul>

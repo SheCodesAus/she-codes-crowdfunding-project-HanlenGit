@@ -101,7 +101,7 @@ function PledgeForm(pledgeData) {
           <option value={false}>False</option>
         </select>
       </div>
-      <button type="submit" className="form-button" Click={handleSubmit}>
+      <button type="submit" className="form-button" onClick={handleSubmit}>
         Submit Pledge
       </button>
     </form>
