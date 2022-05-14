@@ -55,8 +55,6 @@ function ProjectPage() {
   }
     // Normal State
     return (
-      // react fragment prevents divs within a div
-      
       <div className="project-wrapper">
           <div className="project-title-owner">
             <h2>{projectData.title}</h2>
@@ -67,23 +65,25 @@ function ProjectPage() {
             <h3 className="project-page-text">Description: {projectData.description}</h3>
             <h3 className="project-page-text">Project Goal: ${projectData.goal}</h3>
             <h3 className="project-page-text">Pledges total: ${projectPledgeAmount}</h3>
-      </div>
-      <div>
-            <ul>
-                {projectData.pledges.map((pledgeData, key) => {
-                    return (
-                        <PledgeUser
-                        key={`pledge-${pledgeData.id}`} 
-                        amount={pledgeData.amount} 
-                        supporter={pledgeData.supporter} 
-                        comment={pledgeData.comment}
-                        pledge_date={pledgeData.date_created}
-                        />
-                    );
-                })}
-            </ul>
-            <PledgeForm projectId={id}/>
-        </div>
+          </div>
+          <div>
+              <ul>
+                  {projectData.pledges.map((pledgeData, key) => {
+                      return (
+                          <PledgeUser
+                          key={`pledge-${pledgeData.id}`} 
+                          amount={pledgeData.amount} 
+                          supporter={pledgeData.supporter} 
+                          comment={pledgeData.comment}
+                          pledge_date={pledgeData.date_created}
+                          />
+                      );
+                  })}
+              </ul>
+          </div>
+          <div>
+              <PledgeForm projectId={id}/>
+          </div>
       </div> 
     );
   }

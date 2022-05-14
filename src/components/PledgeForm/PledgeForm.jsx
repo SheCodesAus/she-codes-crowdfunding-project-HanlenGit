@@ -44,7 +44,8 @@ function PledgeForm(pledgeData) {
               amount: parseInt(pledge.amount), 
               comment: pledge.comment, 
               anonymous: true, 
-              project_id: parseInt(id)
+              project_id: parseInt(id),
+              pledge_date: date_created
             }),
           }
         );
@@ -70,7 +71,7 @@ function PledgeForm(pledgeData) {
         <label htmlFor="comment">Project ID</label>
         <input
           type="text"
-          id="comment"
+          id="text"
           placeholder="Project id"
           onChange={handleChange}
         />
@@ -79,7 +80,7 @@ function PledgeForm(pledgeData) {
         <label htmlFor="amount">Amount:</label>
         <input
           type="number"
-          id="amount"
+          id="number"
           placeholder="Enter pledge amount"
           onChange={handleChange}
         />
@@ -87,9 +88,17 @@ function PledgeForm(pledgeData) {
       <div className="form-item">
         <label htmlFor="comment">Comment:</label>
         <input
-          type="text"
+          type="comment"
           id="comment"
           placeholder="Enter comment here"
+          onChange={handleChange}
+        />
+        <div className="form-item">
+        <label htmlFor="pledge_date">Pledge Date:</label>
+        <input
+          type="date"
+          id="date"
+          placeholder="Pledge Date"
           onChange={handleChange}
         />
       </div>

@@ -22,7 +22,7 @@ function UserDetail(owner) {
 
     // Normal State
     return (
-        <span>{ownerData.username}</span>
+        <span>{ownerData.owner}</span>
             
     );
 }
