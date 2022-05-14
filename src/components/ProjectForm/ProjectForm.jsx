@@ -24,14 +24,13 @@ function ProjectForm(projectData) {
 
     const token = window.localStorage.getItem("token")
     console.log("handleSubmit", project, token)
-    
-    // Is user logged in and have they put something in all fields?
-    if (token && project.title && project.description && project.goal && project.image && project.is_open && project.date_created && project.category && project.closing_date) {
+
+    if (token && project.title  && project.image && project.description && project.goal && project.date_created) {
       try {
         const response = await fetch(
           `${process.env.REACT_APP_API_URL}projects/`,
           {
-            method: "put",
+            method: "post",
             headers: {
               "Content-Type": "application/json",
               'Authorization': `Token ${token}`,
@@ -49,7 +48,7 @@ function ProjectForm(projectData) {
         );
         const data = await response.json();
         console.log(data)
-        // THIS IS HOW YOU NAVIGATE AUTOMATICALLY
+
         navigate(`/project/${data.id}`);
       } catch (err) {
         console.log(err);
@@ -91,7 +90,7 @@ function ProjectForm(projectData) {
     {
         id: "date_created",
         label: "Date created",
-        placeholder: "Enter title",
+        placeholder: "Enter date",
         type: "date",
     },
 ]
@@ -102,13 +101,13 @@ function ProjectForm(projectData) {
             {formFields.map((field, key) => {
                 return (
                 <div className="form-group" key={`${key}-${field.id}`}>
-                    <label for="exampleInputEmail1" htmlFor={field.id}>
+                    <label htmlFor={field.id}>
                         {field.label}
                     </label>
                     <input
                         type={field.type}
                         id={field.id}
-                        // placeholder={field.placeholder}
+                        placeholder={field.placeholder}
                         onChange={handleChange}
                     />
                 </div>
