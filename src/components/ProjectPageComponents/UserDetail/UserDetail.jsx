@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from "react";
 
-function UserDetail(props) {
-
-    const {userId} = props;
+function UserDetail(owner) {
 
     // State
-    const [userData, setUserData] = useState();
+    const [ownerData, setOwnerData] = useState();
     
     // Actions & Helpers
     useEffect(() => {
-        fetch(`${process.env.REACT_APP_API_URL}users/${userId}`)
+        fetch(`${process.env.REACT_APP_API_URL}users/${owner}`)
         .then((results) => {
             return results.json();
         })
         .then((data) => {
-            setUserData(data);
+            setOwnerData(data);
         });
-    }, [userId]);
+    }, [owner]);
 
- if (!userData) {
+ if (!ownerData) {
      return null
  }
 
     // Normal State
     return (
-        <span>{userData.username}</span>
+        <span>{ownerData.username}</span>
             
     );
 }
