@@ -8,7 +8,7 @@ import './HomePage.css';
 
 function HomePage() {
 // States (set the project list with our fake data for now) - useState preserves some values between function calls. 
-    const [projectList, setProjectList] = useState([]);
+    const [projectData, setProjectData] = useState([]);
 
 // Action & helpers (runs the code after the render) useEffect is a hook. Telling the component to do something after render. 
     useEffect(() => {
@@ -16,18 +16,18 @@ function HomePage() {
         fetch(`${process.env.REACT_APP_API_URL}projects`)
         .then((results) => {
         // sure when you get the data, convert into json,
-        return results.json();
+            return results.json();
         })
         .then((data) => {
         // when you do tzhis set the project list. 
-        setProjectList(data);
+            setProjectData(data);
         });
-    }, []);
+    }, [projectData]);
 
     return (
         <main>
             <div className="project-list-home">
-            {projectList.map((projectData, key) => {
+            {projectData.map((projectData, key) => {
             return <ProjectCard key={key} projectData={projectData} />;
             })}
             </div>
