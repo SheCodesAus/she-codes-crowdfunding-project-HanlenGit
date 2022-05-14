@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import "./ProjectCard.css";
 
 // components
+import "../PledgeForm/PledgeForm";
+import "../ProjectForm/ProjectForm";
 
 
 function ProjectCard( { projectData } ) {
