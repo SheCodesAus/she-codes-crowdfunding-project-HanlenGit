@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
+
 function LoginForm() {
   // State
   const [credentials, setCredentials] = useState({
@@ -60,9 +62,21 @@ function LoginForm() {
         );
         const data = await response.json();
         console.log("data", data);
+
         window.localStorage.setItem("token", data.token);
-        // window.localStorage.setItem("username", credentials.username);
-        navigate("/");
+        window.localStorage.setItem("username", credentials.username);
+        if (data.token===undefined) {
+          console.log("invalid credentials")
+          return (
+            <>
+            <h2>Incorrect Login Details</h2>
+            <h2>Please Try Again</h2>
+            </>
+          );
+        }
+      else {
+        navigate(`/users/${data.id}`);
+      } 
       } catch (err) {
         console.log(err);
       }
@@ -70,11 +84,11 @@ function LoginForm() {
   };
 
   return (
-    <form class="form-group">
-        <label for="exampleInputUsername">Username:</label>
-        <input type="email" className="form-item" placeholder="Enter email" onChange={handleChange} />
-        <label for="staticEmailexampleInputPassword">Password:</label>
-        <input type="email" className="form-item" placeholder="Enter password" onChange={handleChange} />
+    <form className="form-group">
+        <label htmlFor="username">Username:</label>
+        <input type="username" className="form-item" placeholder="Enter email" onChange={handleChange} />
+        <label htmlFor="password">Password:</label>
+        <input type="password" className="form-item" placeholder="Enter password" onChange={handleChange} />
       <button type="submit" onClick={handleSubmit}>
         Login
       </button>
