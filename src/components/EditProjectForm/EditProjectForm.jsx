@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 function EditProjectForm({project}) {
   // State
-    const [editProjectInfo, setEditProjectInfo] = useState(project);
+    const [editProjectData, setEditProjectData] = useState(project);
 
     // Actions
     const handleChange = (event) => {
         const { id, value } = event.target;
-        setEditProjectInfo((prevEditProjectInfo) => ({
-            ...prevEditProjectInfo,
+        setEditProjectData((prevEditProjectData) => ({
+            ...prevEditProjectData,
             [id]: value,
         }));
     };
@@ -25,14 +25,14 @@ function EditProjectForm({project}) {
         const token = window.localStorage.getItem("token");
         if (!token)return;
 
-        const updatedProject = {}
-        if (project.title !== editProjectInfo.title) updatedProject.title = editProjectInfo.title
-        if (project.description !== editProjectInfo.description) updatedProject.description = editProjectInfo.description
-        if (project.goal !== editProjectInfo.goal) updatedProject.goal = parseInt(editProjectInfo.goal)
-        if (project.image !== editProjectInfo.image) updatedProject.image = editProjectInfo.image
-        if (project.date_created !== editProjectInfo.date_created) updatedProject.date_created = new Date(editProjectInfo.date_created).toISOString()
+        const updatedProject = useNavigate
+        if (project.title !== editProjectData.title) updatedProject.title = editProjectData.title
+        if (project.description !== editProjectData.description) updatedProject.description = editProjectData.description
+        if (project.goal !== editProjectData.goal) updatedProject.goal = parseInt(editProjectData.goal)
+        if (project.image !== editProjectData.image) updatedProject.image = editProjectData.image
+        if (project.date_created !== editProjectData.date_created) updatedProject.date_created = new Date(editProjectData.date_created).toISOString()
 
-        if (project.title && project.description && project.goal && project.image && project.category && project.date_created && project.deadline) {
+        if (project.title && project.description && project.goal && project.image && project.category && project.date_created) {
             try {
                 const res = await 
                 fetch(`${process.env.REACT_APP_API_URL}projects/${project.id}`, {
@@ -61,7 +61,7 @@ function EditProjectForm({project}) {
                 <input
                     type="text"
                     id="title"
-                    value={editProjectInfo.title}
+                    value={editProjectData.title}
                     onChange={handleChange}
                 />
             </div>
@@ -70,7 +70,7 @@ function EditProjectForm({project}) {
                 <input
                     type="text"
                     id="description"
-                    value={editProjectInfo.description}
+                    value={editProjectData.description}
                     onChange={handleChange}
                 />
             </div>
@@ -79,7 +79,7 @@ function EditProjectForm({project}) {
                 <input
                     type="number"
                     id="goal"
-                    value={editProjectInfo.goal}
+                    value={editProjectData.goal}
                     onChange={handleChange}
                 />
             </div>
@@ -88,7 +88,7 @@ function EditProjectForm({project}) {
                 <input
                     type="url"
                     id="image"
-                    value={editProjectInfo.image}
+                    value={editProjectData.image}
                     onChange={handleChange}
                 />
             </div>
@@ -97,7 +97,7 @@ function EditProjectForm({project}) {
                 <input
                     type="checkbox"
                     id="is_open"
-                    value={editProjectInfo.is_open}
+                    value={editProjectData.is_open}
                     onChange={handleChange}
                 />
             </div>
@@ -106,7 +106,7 @@ function EditProjectForm({project}) {
                 <input
                     type="date"
                     id="date_created"
-                    value={editProjectInfo.date_created}
+                    value={editProjectData.date_created}
                     onChange={handleChange}
                 />
             </div>
