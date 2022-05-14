@@ -6,24 +6,13 @@ import "./Nav.css";
 
 
 function Nav() {    
-    const hamburger = document.querySelector('.hamburger');
-    const navLink = document.querySelector('.nav__link');
-
-    // hamburger.addEventListener('click', () => {
-//         navLink.classList.toggle('hide');
-// });
     return (
         <nav className="nav-bar">
-            <a id="logo" href="Logo"><img alt="Logo" src={Logo}></img></a>
-            <div className="hamburger">
-                <span className="line" href="Link"><Link to="/">Home</Link></span>
-                <span className="line" href="Link"><Link to="/login">Login</Link></span>
-                <span className="line" href="Link"><Link to="/postaproject">Post a Project</Link></span>
-            </div>
+            <img id="logo" href="Logo" alt="Logo" src={Logo}></img>
             <div>
-                <a className="nav-link" href="Link"><Link class="button" to="/">Home</Link></a> 
-                <a className="nav-link" href="Link"><Link class="button" to="/login">Login</Link></a>
-                <a className="nav-link" href="Link"><Link class="button" to="/postaproject">Post a Project</Link></a> 
+                <Link id="nav-link" href="Link" className="button" to="/">Home</Link>
+                <Link id="nav-link" href="Link" className="button" to="/login">Login</Link>
+                <Link id="nav-link" href="Link" className="button" to="/postaproject">Post a Project</Link>
             </div>
         </nav>
     );
